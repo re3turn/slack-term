@@ -105,7 +105,11 @@ func (c *Chat) Buffer() termui.Buffer {
 		}
 
 		line.cells = append(line.cells, cell)
-		x++
+		if len(string(cell.Ch)) > 1 {
+			x += 2
+		} else {
+			x++
+		}
 	}
 
 	// Append the last line to the array when we didn't encounter any
